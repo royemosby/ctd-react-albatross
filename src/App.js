@@ -4,7 +4,7 @@ import AddTodoForm from './components/AddTodoForm';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
-  const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default?view=Grid%20view&sort[0][field]=Title&sort[0][direction]=asc`;
+  const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`;
 
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -13,6 +13,7 @@ function App() {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+        'Content-Type': 'application/json',
       },
     };
     fetch(url, options)
@@ -43,6 +44,29 @@ function App() {
   }, [todoList, isLoading]);
 
   function addTodo(newTodo) {
+    const title = newTodo.title;
+    const postBody = {
+      fields: {
+        Title: title,
+      },
+      typecast: true,
+    };
+    const options = {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(postBody),
+    };
+    let todo = {};
+    fetch(url, options)
+      .then((resp) => resp.json())
+      .then((data) => {
+        todo.id = data.records[0].id;
+        todo.title = data.records[0].fields.Title;
+        console.log(todo);
+      });
     setTodoList([...todoList, newTodo]);
   }
 
