@@ -63,11 +63,10 @@ function App() {
     fetch(url, options)
       .then((resp) => resp.json())
       .then((data) => {
-        todo.id = data.records[0].id;
-        todo.title = data.records[0].fields.Title;
-        console.log(todo);
+        todo.id = data.id;
+        todo.title = data.fields.Title;
+        setTodoList([...todoList, todo]);
       });
-    setTodoList([...todoList, newTodo]);
   }
 
   function removeTodo(id) {
