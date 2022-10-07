@@ -32,7 +32,7 @@ export default function AddTodoForm({ onAddTodo }) {
       <button
         type="submit"
         //demonstrates re-render that happens on keypress
-        className={console.log('rerender') || style.submit}
+        className={style.submit}
         disabled={todoTitle.length === 0}
       >
         Add
