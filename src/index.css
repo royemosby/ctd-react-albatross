@@ -15,6 +15,16 @@ h1 {
   text-align: center;
 }
 
+/* not a good practice!! */
+h1 img {
+  position: relative;
+  top: 5px;
+  left: 10px;
+  display: inline;
+  height: 4rem;
+  transform: scale(175%);
+}
+
 h1,
 h2,
 h3,
