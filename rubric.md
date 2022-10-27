@@ -10,18 +10,18 @@
 - Using CRA with either NPM or Yarn
 - Mandatory dependencies: "react-router-dom", "prop-types"
 
-### Behavior
-
-#### Installation
+### Installation
 
 - installs without error
 - no component or interaction generates errors. (limited warnings are acceptable)
 - (bonus) application runs without console warnings.
 
-- Read
-- Create
-- Update
-- Delete
+### Behavior (WIP)
+
+- Read: a user should see existing todos in a list
+- Create: a user should be able to add todos using a single field form with a submission button
+- Update: (optional) a user should be able to modify the text of a todo
+- Delete: a user should be able to mark a todo complete, which removes it from the displayed todos
 
 ### Structural
 
