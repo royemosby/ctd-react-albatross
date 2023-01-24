@@ -2,5 +2,5 @@
 
 <details>
 <summary>Open for details</summary>
-<div>This is a CRA for CTD</div>
+<div>This is a <code>CRA</code> for CTD</div>
 </details>
