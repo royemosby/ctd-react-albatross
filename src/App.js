@@ -20,7 +20,7 @@ function App() {
       .then((data) => {
         const todos = data.records.map((item) => ({
           id: item.id,
-          title: item.fields.Title,
+          title: item.fields.title,
         }));
         setTodoList([...todos]);
         setIsLoading(false);
