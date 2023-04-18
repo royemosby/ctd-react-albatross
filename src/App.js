@@ -3,6 +3,8 @@ import TodoList from './components/TodoList';
 import AddTodoForm from './components/AddTodoForm';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import albatross from './assets/albatross.svg';
+import { About } from './components/about';
+import { Link } from 'react-router-dom';
 
 function App() {
   const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`;
@@ -37,7 +39,7 @@ function App() {
   function addTodo(newTodo) {
     const body = {
       fields: {
-        Title: newTodo.title,
+        title: newTodo.title,
       },
     };
     const options = {
@@ -141,9 +143,13 @@ function App() {
 
   return (
     <BrowserRouter>
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+      </nav>
       <Routes>
         <Route path="/" element={appSubComponent()}></Route>
-        <Route path="/new" element={<h1>New todo list</h1>}></Route>
+        <Route path="/about" element={<About />}></Route>
       </Routes>
     </BrowserRouter>
   );
