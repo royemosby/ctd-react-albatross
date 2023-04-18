@@ -39,7 +39,7 @@ function App() {
   function addTodo(newTodo) {
     const body = {
       fields: {
-        title: newTodo.title,
+        Title: newTodo.title,
       },
     };
     const options = {
